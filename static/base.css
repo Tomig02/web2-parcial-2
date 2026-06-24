@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Quicksand:wght@300..700&display=swap');
+
+:root {
+  --color-primary: #4caf50;
+  --color-secondary: #6d4c41;
+  --color-tertiary: #e8d8c3;
+  --font-primary: 'Quicksand', sans-serif;
+  --font-secondary: 'Open Sans', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: var(--font-secondary);
+}
+ul{
+    list-style: none;
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    padding: 0.25rem;
+}
+.link-btn{
+    background-color: var(--color-primary);
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    border-radius: 0.5rem;
+    
+    text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 0.5rem;
+}
+.link-btn:hover{
+    cursor: pointer;
+    background-color: color-mix(in srgb, var(--color-primary), #000 5%);
+}
+
+nav{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 0.5rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & a{
+        text-decoration: none;
+        color: black;
+        font-size: 1rem;
+    }
+    & .logo{
+        font-family: var(--font-primary);
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+
+        & span{
+            font-size: 1.4rem;
+            margin-left: 0.5rem;
+        }
+    }
+    & ul{
+        display: flex;
+
+        & li{
+            padding: 0.3rem 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+    & .burger
+    {
+
+        @media (max-width: 768px) {
+            visibility: inherit;
+        }
+        @media (min-width: 768px) {
+            visibility: hidden;
+        }
+    }
+    
+}
+.nav-obscure{
+    background-color: var(--color-tertiary); 
+}
+
+footer{
+    display: flex;    
+    justify-content: space-between;
+    padding: 2rem 2.5rem ;
+    background-color: var(--color-primary);
+    color: white;
+
+    justify-content: center;
+
+    & .logo{
+        display: flex;
+        align-items: center;
+        font-family: var(--font-primary);
+        font-weight: bolder;
+        
+        & span{
+            margin-left: 1rem;
+        }
+    }
+}

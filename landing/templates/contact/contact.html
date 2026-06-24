@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'contact/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="full-screen-form">
+        <div class="content">
+            <div class="info">
+                <h3>Contactanos</h3>
+                <p>¿Tenés alguna consulta sobre un producto, tu compra o 
+                    necesitás ayuda antes de decidir? Completá el formulario 
+                    y te respondemos lo antes posible para acompañarte 
+                    en cada paso. Estamos para que tu experiencia sea simple, 
+                    segura y sin complicaciones.
+                </p>
+            </div>
+            <form action="">
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="input-group">
+                        <label for="name">Apellido</label>
+                        <input type="text" name="surname" id="surname">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="name">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="input-group">
+                    <label for="name">Telefono</label>
+                    <input type="number" name="phone" id="phone">
+                </div>
+                <div class="input-group">
+                    <label for="name">Mensaje</label>
+                    <textarea name="message" id="message"></textarea>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+    
+{% endblock %}
