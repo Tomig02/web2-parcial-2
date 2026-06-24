@@ -1,0 +1,176 @@
+
+header{
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    margin-top: 7rem;
+
+    display: flex;
+    flex-direction: column;
+
+    & .background-color{
+        position: absolute;
+        height: 80%;
+        width: 100%;
+        bottom: 0;
+        z-index: -100;
+        background-color: var(--color-primary);
+        
+        @media (min-width: 768px) {
+            height: 40%;
+        }
+    }
+    & .header-title{
+        width: 100%;
+        text-align: center;
+    }
+    & .mission{
+        width: 100%;
+        flex: 1;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 1rem;
+    
+        & .mission-text{
+            padding: 1rem;
+            text-align: center;
+    
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        & .mission-item{
+            width: 85%;
+            object-fit: cover;
+    
+            background-color: white;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border-radius: 0.5rem;
+    
+            @media (min-width: 768px) {
+                width: 45%;
+            }
+            @media (min-width: 1068px) {
+                width: 35%;
+            }
+        }
+    
+        @media (min-width: 768px) {
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: normal;
+        }
+    }
+}
+
+.company-values{
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    text-align: center;
+
+    & h2{
+        margin-bottom: 2rem;
+    }    
+    & .values-list{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+
+        @media (min-width: 768px) 
+        {
+            align-items: normal;
+            flex-direction: row;
+        }
+    }
+    & .values-group{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        gap: 1rem;
+        @media (min-width: 768px) 
+        {
+            width: 50%;
+            flex-direction: row;
+            align-items: normal;
+        }
+    }
+    & .value-card{
+        width: 60%;
+        min-height: 17rem;
+        border-radius: 0.2rem;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        overflow: hidden;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        & img{
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.founder{
+    width: 100%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+    text-align: center;
+
+    & h2{
+        margin-bottom: 2rem;
+    }  
+    & .founder-data{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+
+        & img{
+            width: 70%;
+        }
+        & .founder-text{
+            width: 70%;
+        }
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: normal;
+
+            & img{
+                width: 40%;
+            }
+            & .founder-text{
+                width: 40%;
+            }
+        }
+    }
+}
+
+.invitation{
+    width: 100%;
+    min-height: 10vh;
+    padding: 5rem 3rem;
+
+    text-align: center;
+    background-color: color-mix(in srgb, var(--color-primary), #000 30%);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: white;
+    
+    & h2{
+        margin-bottom: 2rem;
+    }
+}

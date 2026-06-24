@@ -2,40 +2,68 @@
 {% load static %}
 
 {% block extra_head %}
+    <link rel="stylesheet" href="{% static 'about_us/style.css' %}">
 {% endblock %}
 
 {% block content %}
-<div>
-    <h1>Nuestra mision y vision</h1>
-</div>
 
-<section class="mission">
-    <img src="" alt="">
-
-    <div>
-        <h2>Primer subtitulo</h2>
-        <p>Explicacion de la mision</p>
-
-        <h2>Segundo subtitulo</h2>
-        <p>Explicacion de la vision</p>
+<header>
+    <div class="header-title">
+        <h1>Nuestra mision y vision</h1>
     </div>
-</section>
+    
+    <section class="mission">
+        <img class="mission-item" src="{% static 'landing/foto4.jpg' %}" alt="">
+    
+        <div class="mission-item mission-text">
+            <h2>Primer subtitulo</h2>
+            <p>Explicacion de la mision</p>
+    
+            <h2>Segundo subtitulo</h2>
+            <p>Explicacion de la vision</p>
+        </div>
+    
+        <div class="background-color"></div>
+    </section>
+</header>
 
-<section class="values">
+
+<section class="company-values">
     <h2> Nuestros valores </h2>
     <div class="values-list">
-        <div class="value-card">
-            <img src="" alt="">
-            <h3>Value title</h3>
-            <p>Value paragraph</p>
+        <div class="values-group">
+            <div class="value-card">
+                <img src="{% static 'landing/foto4.jpg' %}" alt="">
+                <h3>Value title</h3>
+                <p>Value paragraph</p>
+            </div>
+            <div class="value-card">
+                <img src="{% static 'landing/foto4.jpg' %}" alt="">
+                <h3>Value title</h3>
+                <p>Value paragraph</p>
+            </div>
         </div>
+        <div class="values-group">
+            <div class="value-card">
+                <img src="{% static 'landing/foto4.jpg' %}" alt="">
+                <h3>Value title</h3>
+                <p>Value paragraph</p>
+            </div>
+            <div class="value-card">
+                <img src="{% static 'landing/foto4.jpg' %}" alt="">
+                <h3>Value title</h3>
+                <p>Value paragraph</p>
+            </div>
+        </div>
+        
     </div>
 </section>
 
 <section class="founder">
     <h2>Nuestro fundador</h2>
+
     <div class="founder-data">
-        <img class="founder-profile" src="" alt="">
+        <img class="founder-profile" src="{% static 'landing/foto4.jpg' %}" alt="">
         
         <div class="founder-text">
             <h3>Titulo</h3>
