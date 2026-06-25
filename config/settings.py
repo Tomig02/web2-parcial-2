@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,14 +76,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'parcial-2',
-        'USER': 'postgres',
-        'PASSWORD': '1324',
-        'HOST': '127.0.0.1', # Use 'localhost' or your server IP
-        'PORT': '5432',      # Default PostgreSQL port
-    }
+    'default': dj_database_url.config(
+        # Aquí pones la URL de tu base de datos LOCAL (para cuando programes en tu PC)
+        default='postgres://postgres:1324@127.0.0.1:5432/parcial-2',
+        conn_max_age=600
+    )
 }
 
 # Password validation
