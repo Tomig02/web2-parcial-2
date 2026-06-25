@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-l8_+2vchtla&^yka#e3kq+&*t4k7(n56m&5fyfgr128z3+9t1)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['web2-parcial-2.onrender.com']
+ALLOWED_HOSTS = ['web2-parcial-2.onrender.com', "127.0.0.1"]
 
 
 # Application definition
@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landing',
-    'administration'
+    'administration',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -132,7 +133,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = "c2280296.ferozo.com"
 EMAIL_PORT = 465
 EMAIL_USE_TLS = True

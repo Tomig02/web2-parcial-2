@@ -50,7 +50,6 @@ def register_view(request):
                 messages.success(request, "Usuario creado correctamente")
                 return redirect('/admin/login')
         else:
-            # Code failed. Reload form from session to show it again
             form_data = request.session.get('pending_form_data')
             form = forms.RegisterForm(form_data)
             return render(request, 'administration/form-panel.html', {
@@ -67,6 +66,8 @@ def register_view(request):
             print("CLEANED:", form.cleaned_data)
             print(email_a_buscar)
             aprobado = AuthorizedUsers.objects.filter(email=email_a_buscar).exists()
+            users = AuthorizedUsers.objects.all()
+            print(users.values())
             print(aprobado)
             if aprobado :
                 request.session['pending_form_data'] = request.POST.dict()
@@ -97,7 +98,7 @@ class CustomLoginView(LoginView):
     
 
 def send_email_verification(email, code):
-    print("enviando codigo" + code)
+    print("enviando codigo " + code + " a " + email)
     subject = "Código de verificación"
     message = f"Tu código de verificación es: {code}"
 

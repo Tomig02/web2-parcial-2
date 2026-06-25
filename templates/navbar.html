@@ -14,5 +14,35 @@
         <li><a href="/admin">Admin</a></li>
     </ul>
 
-    <button class="burger">X</button>
+    <button class="burger burger-open">X</button>
 </nav>
+
+<div class="burger-menu-bg">
+    <ul class="burger-menu">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/products">Productos</a></li>
+        <li><a href="/about-us">Nosotros</a></li>
+        <li><a href="/contact-us">Contacto</a></li>
+        <li><a href="/admin">Admin</a></li>
+    </ul>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const burgerBtnOpen = document.querySelector('.burger-open');
+        const burgerMenuBg = document.querySelector('.burger-menu-bg');
+
+        if (burgerBtnOpen && burgerMenuBg) {
+            burgerBtnOpen.addEventListener('click', () => {
+                burgerMenuBg.classList.add('burger-show');
+            });
+        }
+        if (burgerMenuBg) {
+            burgerMenuBg.addEventListener('click', (e) => {
+                if (e.target === burgerMenuBg) {
+                    burgerMenuBg.classList.remove('burger-show');
+                }
+            });
+        }
+    });
+</script>

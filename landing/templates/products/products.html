@@ -7,16 +7,11 @@
 
 {% block content %}
     <main class="productos">
-
         <h1>PRODUCTOS DISPONIBLES</h1>
-
         <div class="grid">
-
-            {% include "./product-card.html" with url="" title="CEPILLO DE BAMBÚ" subtitle="set de 2" text="Cepillos de dientes biodegradables con cerdas de carbón activado." price="12.000" %}
-            {% include "./product-card.html" with url="" title="JABÓN ARTESANAL" subtitle="Avena y Miel" text="Barra de jabón natural libre de químicos agresivos." price="8.500" %}
-            {% include "./product-card.html" with url="" title="COMPOSTADOR" subtitle="Tamaño pequeño" text="Pequeño compostador de cocina para residuos orgánicos." price="45.000" %}
-            {% include "./product-card.html" with url="" title="BOLSA DE MALLA" subtitle="Algodón" text="Bolsa reutilizable para compras a granel." price="7.000" %}
-            {% include "./product-card.html" with url="" title="BOMBILLAS DE BAMBÚ" subtitle="set de 10" text="Alternativa ecológica a las pajitas de plástico." price="9.500" %}
+            {% for producto in productos %}
+                {% include "./product-card.html" with url=producto.url title=producto.title subtitle=producto.subtitle text=producto.text price=producto.price price_usd=producto.price_usd %}
+            {% endfor %}
         </div>
     </main>
 {% endblock %}

@@ -87,9 +87,16 @@ body {
         margin-top: 12px;
     }
 
+    & .precio-container{
+        display: flex;
+        flex-direction: column;
+    }
     & .card-precio {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
         font-weight: bold;
+    }
+    & .card-precio-dolar {
+        font-size: 0.7rem;
     }
 
     button {

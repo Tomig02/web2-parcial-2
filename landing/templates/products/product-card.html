@@ -15,7 +15,11 @@
         </p>
 
         <div class="card-footer">
-            <span class="card-precio">${{price}}</span>
+            <div class="precio-container">
+                <span class="card-precio" data-pesos="{{ price }}">${{price}}</span>
+                <span class="card-precio-dolar">USD {{price_usd}}</span>
+            </div>
+            
             <button>AÑADIR</button>
         </div>
     </div>

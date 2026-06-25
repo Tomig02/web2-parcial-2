@@ -6,4 +6,5 @@ urlpatterns = [
     path('contact-us', views.contact_view, name='contact'),
     path('products', views.product_view, name='products'),
     path('about-us', views.about_us_view, name='about-us'),
+    path('api/consultas/', views.api_datos , name="api-datos")
 ]

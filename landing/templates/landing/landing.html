@@ -10,22 +10,29 @@
         <img src="{% static 'landing/foto4.jpg' %}" alt="Background image">
 
         <div>
-            <h1>Lorem Ipsum Lorem Ipsum</h1>
-            <h3>Lorem Ipsum Dolor sit amet et Lorem Lorem Ipsum Dolor sit amet et Lorem</h3>
+            <h1>Volvé a lo natural. Viví en armonía.</h1>
+            <h3 class="subtitle">Todo lo que necesitas para un consumo responsable, desde cepillos de bambú hasta composteras de cocina. El futuro es sustentable.</h3>
             <a href="/products" class="link-btn">Explorar</a>
         </div>
     </header>
 
     <section class="products">
-        <img class="full-width" src="{% static 'landing/foto2.jpg' %}" alt="">
+        <div class="full-width">
+            <img class="full-width-image" src="{% static 'landing/foto2.jpg' %}" alt="">
+            <div class="text-productos">
+                <h2>Nuestros productos</h2>
+            </div>
+            
+        </div>
+        
 
         <div class="product-cards">
-            {% include "./card.html" with url="landing/foto1.jpg" name="Producto"%}
-            {% include "./card.html" with url="landing/foto1.jpg" name="Producto"%}
-            {% include "./card.html" with url="landing/foto1.jpg" name="Producto"%}
-            {% include "./card.html" with url="landing/foto1.jpg" name="Producto"%}
-            {% include "./card.html" with url="landing/foto1.jpg" name="Producto"%}
-            {% include "./card.html" with url="landing/foto1.jpg" name="Producto"%}
+            {% include "./card.html" with url="landing/foto1.jpg" name="Higiene personal"%}
+            {% include "./card.html" with url="landing/foto1.jpg" name="Hogar"%}
+            {% include "./card.html" with url="landing/foto1.jpg" name="Patio"%}
+            {% include "./card.html" with url="landing/foto1.jpg" name="Indumentaria"%}
+            {% include "./card.html" with url="landing/foto1.jpg" name="Calzado"%}
+            {% include "./card.html" with url="landing/foto1.jpg" name="Generales"%}
         </div>
     </section>
 
@@ -33,25 +40,23 @@
         <div class="first-part">
             <img class="img-center" src="{% static 'landing/foto3.jpg' %}" alt="">
             <div class="no-bg-text">
-                <h2>Lorem Ipsum Dolor</h2>
+                <h2>Calidad que convive</h2>
                 <p>
-                    Lorem Ipsum Dolor Sit amet Lorem Ipsum Dolor Sit amet Lorem 
-                    Ipsum Dolor Sit amet Lorem Ipsum Dolor Sit amet
+                    Creemos que los productos que usás todos los días no deberían competir con la naturaleza, sino integrarse a ella. Es calidad pensada para durar en tu hogar y desaparecer de la Tierra sin dejar rastro.
                 </p>
             </div>
         </div>
         <div class="second-part">
             <div class="bg-text">
-                <h2>Lorem Ipsum Dolor</h2>
+                <h2>Precios amistosos</h2>
                 <p>
-                    Lorem Ipsum Dolor Sit amet Lorem Ipsum Dolor Sit amet Lorem 
-                    Ipsum Dolor Sit amet Lorem Ipsum Dolor Sit amet
+                    Cuidar el planeta no tiene por qué ser un lujo exclusivo. Trabajamos de forma directa y transparente para ofrecerte alternativas ecológicas a un valor justo y real.
                 </p>
             </div>
             <img class="img-corner" src="{% static 'landing/foto1.jpg' %}" alt="">
         </div>
         <div class="contact-us">
-            <h2>Lorem Ipsum Dolor Sit Amet</h2>
+            <h2>Ponete en contacto con nuestro equipo</h2>
             <a href="/contact-us" class="link-btn">Contactanos</a>
         </div>
     </section>
