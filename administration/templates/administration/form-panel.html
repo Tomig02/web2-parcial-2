@@ -17,13 +17,13 @@
         </form>
         {% if request.resolver_match.url_name == "login" %}
             <p>
-                Don't have an account?
-                <a href="{% url 'administration:register' %}" style="color: blue">Register</a>
+                No tenes una cuenta?
+                <a href="{% url 'administration:register' %}" style="color: blue">Registrarse</a>
             </p>
         {% elif request.resolver_match.url_name == "register" %}
             <p>
-                Already have an account?
-                <a href="{% url 'administration:login' %}" style="color: blue">Login</a>
+                Ya tenes una cuenta?
+                <a href="{% url 'administration:login' %}" style="color: blue">Ingresar</a>
             </p>
         {% endif %}
         
@@ -42,7 +42,7 @@
 
 {% if show_verification %}
 <div class="verification-modal" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid black; z-index: 1000;">
-    <h3>Enter the code sent to your email</h3>
+    <h3>Ingresa el codigo de verificacion</h3>
     
     {% if verification_error %}
         <p style="color: red;">{{ verification_error }}</p>
@@ -50,8 +50,8 @@
 
     <form method="post">
         {% csrf_token %}
-        <input type="text" name="verification_code" placeholder="123456" required>
-        <button type="submit" name="submit_verification">Verify & Create Account</button>
+        <input type="text" name="verification_code" placeholder="12345" required>
+        <button type="submit" name="submit_verification">Verificar</button>
     </form>
 </div>
 <div class="backdrop" style="position: fixed; top: 0; left: 0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index: 999;"></div>
