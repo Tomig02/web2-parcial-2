@@ -61,19 +61,14 @@ def register_view(request):
     elif request.method == 'POST':
         form = forms.RegisterForm(request.POST) 
 
-        print(form.is_valid())
-        print(form.error_messages)
-        if True: #form.is_valid()
+        if form.is_valid():
             email_a_buscar = form.cleaned_data["username"]
             print("POST:", request.POST)
             print("CLEANED:", form.cleaned_data)
             print(email_a_buscar)
             aprobado = AuthorizedUsers.objects.filter(email=email_a_buscar).exists()
-            ya_existe = CustomUser.objects.filter(email=email_a_buscar).exists()
-
-            print(ya_existe)
             print(aprobado)
-            if aprobado and not ya_existe:
+            if aprobado :
                 request.session['pending_form_data'] = request.POST.dict()
                 usuario = AuthorizedUsers.objects.get(email=email_a_buscar)
                 request.session['email_verification_code'] = usuario.code

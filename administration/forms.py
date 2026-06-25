@@ -22,7 +22,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 
-class RegisterForm(UserCreationForm):
+class RegisterForm(forms.ModelForm):
     name = forms.CharField(
         label="Nombre",
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tu nombre'})
@@ -38,19 +38,36 @@ class RegisterForm(UserCreationForm):
             'class': 'form-control'
         })
     )
+    # Declaramos explícitamente los dos campos de contraseña
+    password1 = forms.CharField(
+        label="Contraseña",
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': '••••••••'})
+    )
+    password2 = forms.CharField(
+        label="Repetir Contraseña",
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Repita contraseña'})
+    )
 
-    class Meta(UserCreationForm.Meta):
+    class Meta:
         model = CustomUser
-        fields = ("name", "surname", "username", "password1", "password2")
+        fields = ("username", "name", "surname")
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        if 'password1' in self.fields:
-            self.fields['password1'].label = "Contraseña"
-            self.fields['password1'].widget.attrs.update({'class': 'form-control', 'placeholder': '••••••••'})
-        if 'password2' in self.fields:
-            self.fields['password2'].label = "Repetir Contraseña"
-            self.fields['password2'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Repita contraseña'})
+    def clean(self):
+        cleaned_data = super().clean()
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
+
+        if password1 and password2 and password1 != password2:
+            self.add_error('password2', "Los dos campos de contraseña no coinciden.")
+        
+        return cleaned_data
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password1"])
+        if commit:
+            user.save()
+        return user
 
 
 class RecoveryForm(forms.Form):
@@ -73,7 +90,7 @@ class VerificationForm(forms.Form):
 
 # forms.py
 
-from django.forms import ModelForm
+from django.forms import ModelForm, ValidationError
 from landing.models import UserMessages
 
 class UserMessageForm(ModelForm):
