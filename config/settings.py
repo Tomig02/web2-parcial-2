@@ -130,6 +130,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static', 
 ]
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "c2280296.ferozo.com"
 EMAIL_PORT = 465
