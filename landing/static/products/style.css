@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f7f5ee;
+}
+
+.productos {
+    max-width: 75rem;
+    margin: 8rem auto;
+    padding: 0 2rem;
+    
+    & h1 {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 40px;
+        color: #243528;
+    }
+
+    & .grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1rem;
+
+        @media (min-width: 576px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+.card {
+    background: white;
+    border: 2px solid #d5d5d5;
+    padding: 0.5rem;
+    width: 60%;
+    justify-self: center;
+
+    @media (min-width: 576px) {
+        width: 100%;
+    }
+    @media (min-width: 768px) {
+        width: 90%;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: 5rem;
+        object-fit: cover;
+        border: 1px solid #ddd;
+    }
+
+    & .card-contenido {
+        padding-top: 10px;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        text-align: center;
+        color: #243528;
+    }
+
+    & .card-subtitulo {
+        display: block;
+        text-align: center;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        min-height: 55px;
+    }
+
+    & .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 12px;
+    }
+
+    & .card-precio {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+
+    button {
+        border: none;
+        background: #284b33;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 900px) {
+    .productos__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .productos__grid {
+        grid-template-columns: 1fr;
+    }
+}

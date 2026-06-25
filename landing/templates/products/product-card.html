@@ -1,0 +1,22 @@
+{% load static %}
+
+<article class="card">
+    <img src="{% get_static_prefix %}{{ url }}" alt="Cepillo de bambú">
+
+    <div class="card-contenido">
+        <h2>{{title}}</h2>
+
+        <span class="card-subtitulo">
+            {{subtitle}}
+        </span>
+
+        <p>
+            {{text}}
+        </p>
+
+        <div class="card-footer">
+            <span class="card-precio">${{price}}</span>
+            <button>AÑADIR</button>
+        </div>
+    </div>
+</article>

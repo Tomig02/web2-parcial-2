@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'administration/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<main class="form-page">
+    <div class="form-panel">
+        <h1> {{page_action}} </h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Enviar</button>
+        </form>
+        {% if request.resolver_match.url_name == "login" %}
+            <p>
+                Don't have an account?
+                <a href="{% url 'administration:register' %}" style="color: blue">Register</a>
+            </p>
+        {% elif request.resolver_match.url_name == "register" %}
+            <p>
+                Already have an account?
+                <a href="{% url 'administration:login' %}" style="color: blue">Login</a>
+            </p>
+        {% endif %}
+        
+        {% if messages %}
+            <div class="messages-container" style="margin: 15px 0;">
+                {% for message in messages %}
+                    <!-- Esta estructura aprovecha las clases nativas de Bootstrap si lo utilizas -->
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" style="padding: 10px; border-radius: 4px; margin-bottom: 10px; {% if message.tags == 'success' %}background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;{% else %}background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</main>
+
+{% if show_verification %}
+<div class="verification-modal" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border: 1px solid black; z-index: 1000;">
+    <h3>Enter the code sent to your email</h3>
+    
+    {% if verification_error %}
+        <p style="color: red;">{{ verification_error }}</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="verification_code" placeholder="123456" required>
+        <button type="submit" name="submit_verification">Verify & Create Account</button>
+    </form>
+</div>
+<div class="backdrop" style="position: fixed; top: 0; left: 0; width:100%; height:100%; background: rgba(0,0,0,0.5); z-index: 999;"></div>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'administration/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="margin-container">
+    <div class="top-bar">
+        <form method="post" action="{% url 'administration:logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-logout">
+                Cerrar sesión
+            </button>
+        </form>
+    </div>
+
+    <h1>Mensajes recibidos</h1>
+    <h2>Resumen de solicitudes</h2>
+
+    <div class="stats">
+        <div class="stat-card">
+            <h3>Total</h3>
+            <p>{{ total }}</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Comercial</h3>
+            <p>{{ counts.Consulta_Comercial }}</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Técnica</h3>
+            <p>{{ counts.Consulta_Técnica }}</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>RRHH</h3>
+            <p>{{ counts.Consulta_de_RRHH }}</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>General</h3>
+            <p>{{ counts.Consulta_General }}</p>
+        </div>
+    </div>
+
+    <table class="messages-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Mensaje</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for msg in data %}
+            <tr>
+                <td>{{ msg.name }}</td>
+                <td>{{ msg.surname }}</td>
+                <td>{{ msg.email }}</td>
+                <td>{{ msg.phone }}</td>
+                <td>{{ msg.message|truncatechars:100 }}</td>
+                <td class="actions">
+                    <button
+                        class="btn-edit"
+                        onclick="openEditModal(
+                            '{{ msg.id }}',
+                            '{{ msg.name|escapejs }}',
+                            '{{ msg.surname|escapejs }}',
+                            '{{ msg.email|escapejs }}',
+                            '{{ msg.phone|default:''|escapejs }}',
+                            '{{ msg.message|escapejs }}'
+                        )">
+                        Editar
+                    </button>
+
+                    <form method="post"
+                        action="{% url 'administration:delete_message' msg.id %}"
+                        onsubmit="return confirm('¿Eliminar mensaje?');">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-delete">
+                            Eliminar
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No hay mensajes.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+
+            <h2>Editar mensaje</h2>
+
+            <form id="editForm" method="post">
+                {% csrf_token %}
+
+                <input type="text" name="name" id="editName" required>
+
+                <input type="text" name="surname" id="editSurname" required>
+
+                <input type="email" name="email" id="editEmail" required>
+
+                <input type="text" name="phone" id="editPhone">
+
+                <textarea name="message"
+                        id="editMessage"
+                        rows="5"
+                        required></textarea>
+
+                <button type="submit">
+                    Guardar cambios
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function openEditModal(id, name, surname, email, phone, message)
+    {
+        document.getElementById("editName").value = name;
+        document.getElementById("editSurname").value = surname;
+        document.getElementById("editEmail").value = email;
+        document.getElementById("editPhone").value = phone;
+        document.getElementById("editMessage").value = message;
+
+        document.getElementById("editForm").action =
+            `/admin/${id}/edit/`;
+
+        document.getElementById("editModal").style.display = "block";
+    }
+
+    function closeModal()
+    {
+        document.getElementById("editModal").style.display = "none";
+    }
+
+    window.onclick = function(event)
+    {
+        const modal = document.getElementById("editModal");
+
+        if(event.target === modal)
+        {
+            closeModal();
+        }
+    }
+</script>
+{% endblock %}

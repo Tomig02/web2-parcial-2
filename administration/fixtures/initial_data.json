@@ -1,0 +1,20 @@
+[
+  {
+    "model": "administration.authorizedusers",
+    "pk": 1,
+    "fields": {
+      "name": "Alguien",
+      "email": "annavillegas@live.com.ar",
+      "code": "12345"
+    }
+  },
+  {
+    "model": "administration.authorizedusers",
+    "pk": 2,
+    "fields": {
+      "name": "Tomas",
+      "email": "guardotomas02@gmail.com",
+      "code": "12345"
+    }
+  }
+]
